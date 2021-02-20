@@ -51,7 +51,8 @@ public class GraphQLProvider {
     private RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("Query")
-                        .dataFetcher("totalPhotos", graphQLDataFetchers.totalPhotosDataFetcher()))
+                        .dataFetcher("totalPhotos", graphQLDataFetchers.totalPhotosDataFetcher())
+                        .dataFetcher("allPhotos", graphQLDataFetchers.allPhotosDataFetcher()))
                 .type(newTypeWiring("Mutation")
                         .dataFetcher("postPhoto", graphQLDataFetchers.postPhotoDataFetcher()))
                 .build();

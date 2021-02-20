@@ -19,11 +19,17 @@ public class GraphQLDataFetchers {
             try {
                 String name = dataFetchingEnvironment.getArgument("name");
                 String description = dataFetchingEnvironment.getArgument("description");
-                photos.add(new Photo(name, description));
-                return true;
+                Photo created = new Photo(name, description);
+                photos.add(created);
+                return created;
             } catch (Exception e) {
-                return false;
+                return null;
             }
         };
     }
+
+    public DataFetcher allPhotosDataFetcher() {
+        return dataFetchingEnvironment -> photos;
+    }
 }
+
